@@ -11,8 +11,8 @@
 #include "list.h"
 
 list_t *list_alloc() { 
-  list_t *list = (*list_t) malloc(sizeof(list_t));
-  node_t *node = (*node_t) malloc(sizeof(node_t));
+  list_t *list = (list_t *) malloc(sizeof(list_t));
+  node_t *node = (node_t *) malloc(sizeof(node_t));
   list->head = node;
 
   return list;
@@ -35,7 +35,7 @@ void list_add_to_back(list_t *l, elem value) {
 	while (current != NULL) {
 		current = current->next;
 	}
-	current->next = value;
+	current->next->value = value;
 }
 void list_add_to_front(list_t *l, elem value) {}
 void list_add_at_index(list_t *l, elem value, int index) {}
