@@ -46,7 +46,12 @@ void list_add_to_back(list_t *l, elem value) {
     current->next->next = NULL;    
   }
 }
-void list_add_to_front(list_t *l, elem value) {}
+void list_add_to_front(list_t *l, elem value) {
+  node_t* new_node = (node_t *) malloc(sizeof(node_t));
+  new_node->value = value;
+  new_node->next = l->head;
+  l->head = new_node;  
+}
 void list_add_at_index(list_t *l, elem value, int index) {}
 
 elem list_remove_from_back(list_t *l) { return -1; }
