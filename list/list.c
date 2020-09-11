@@ -52,7 +52,23 @@ void list_add_to_front(list_t *l, elem value) {
   new_node->next = l->head;
   l->head = new_node;  
 }
-void list_add_at_index(list_t *l, elem value, int index) {}
+void list_add_at_index(list_t *l, elem value, int index) {
+  node_t* current = l->head;
+  
+  if ((current == NULL) || (index == 0)) {
+    list_add_to_front(l, value);
+  } else {
+    int current_index = 0;
+    while (current_index < index) {
+      current = current->next;
+      current_index++;
+    }
+    node_t* new_node = (node_t *) malloc(sizeof(node_t));
+    new_node->value = value;
+    new_node->next = current->next;
+    current->next = new_node;
+  }
+}
 
 elem list_remove_from_back(list_t *l) { return -1; }
 elem list_remove_from_front(list_t *l) { return -1; }
