@@ -12,7 +12,6 @@
 
 list_t *list_alloc() { 
   list_t *list = (list_t *) malloc(sizeof(list_t));
-  node_t *node = (node_t *) malloc(sizeof(node_t));
   list->head = NULL;
 
   return list;
@@ -26,6 +25,7 @@ void list_print(list_t *l) {
 		printf(" %d ", temp->value);
 		temp = temp->next;
 	}
+  printf("\n");
 }
 
 int list_length(list_t *l) { return -1; }
