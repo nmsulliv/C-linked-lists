@@ -28,7 +28,15 @@ void list_print(list_t *l) {
   printf("\n");
 }
 
-int list_length(list_t *l) { return -1; }
+int list_length(list_t *l) { 
+	node_t* temp = l->head;
+  int count = 0;
+	while (temp != NULL) {
+		temp = temp->next;
+    count++;
+	}
+  return count;
+}
 
 void list_add_to_back(list_t *l, elem value) {
 	node_t* current = l->head;
@@ -54,9 +62,11 @@ void list_add_to_front(list_t *l, elem value) {
 }
 void list_add_at_index(list_t *l, elem value, int index) {
   node_t* current = l->head;
-  
+  int length = list_length(l);
   if ((current == NULL) || (index == 0)) {
     list_add_to_front(l, value);
+  } else if (index > length) {
+    list_add_to_back(l, value);
   } else {
     int current_index = 0;
     while (current_index < index) {
