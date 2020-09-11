@@ -38,7 +38,7 @@ void list_add_to_back(list_t *l, elem value) {
     current->next = NULL;
     l->head = current;
   } else {
-    while (current != NULL) {
+    while (current->next != NULL) {
       current = current->next;
     }
     current->next = (node_t *) malloc(sizeof(node_t));
