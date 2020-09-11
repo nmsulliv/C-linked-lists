@@ -13,7 +13,7 @@
 list_t *list_alloc() { 
   list_t *list = (list_t *) malloc(sizeof(list_t));
   node_t *node = (node_t *) malloc(sizeof(node_t));
-  list->head = node;
+  list->head = NULL;
 
   return list;
 }
@@ -32,10 +32,19 @@ int list_length(list_t *l) { return -1; }
 
 void list_add_to_back(list_t *l, elem value) {
 	node_t* current = l->head;
-	while (current != NULL) {
-		current = current->next;
-	}
-	current->next->value = value;
+  if (current == NULL) {
+    current = (node_t *) malloc(sizeof(node_t));
+    current->value = value;
+    current->next = NULL;
+    l->head = current;
+  } else {
+    while (current != NULL) {
+      current = current->next;
+    }
+    current->next = (node_t *) malloc(sizeof(node_t));
+    current->next->value = value;
+    current->next->next = NULL;    
+  }
 }
 void list_add_to_front(list_t *l, elem value) {}
 void list_add_at_index(list_t *l, elem value, int index) {}
