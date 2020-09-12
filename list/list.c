@@ -102,7 +102,26 @@ elem list_remove_from_back(list_t *l) {
   }
   return -1;
 }
-elem list_remove_from_front(list_t *l) { return -1; }
+elem list_remove_from_front(list_t *l) { 
+  int length = list_length(l);
+  node_t* head = l->head;
+
+  if (length == 0) {
+    return 0;
+  } else if (length == 1) {
+    elem value = head->value;
+    free(head);
+    l->head = NULL;
+    return value;
+  } else {
+    node_t* next = head->next;
+    elem value = head->value;
+    free(head);
+    l->head = next;
+    return value;
+  }
+  return -1;
+}
 elem list_remove_at_index(list_t *l, int index) { return -1; }
 
 bool list_is_in(list_t *l, elem value) {
