@@ -84,6 +84,28 @@ elem list_remove_from_back(list_t *l) { return -1; }
 elem list_remove_from_front(list_t *l) { return -1; }
 elem list_remove_at_index(list_t *l, int index) { return -1; }
 
-bool list_is_in(list_t *l, elem value) { return false; }
+bool list_is_in(list_t *l, elem value) {
+	node_t* current = l->head;
+	while (current != NULL) {
+    if (current->value == value) {
+      return true;
+    }
+		current = current->next;
+	}
+  return false;
+}
 elem list_get_elem_at(list_t *l, int index) { return -1; }
-int list_get_index_of(list_t *l, elem value) { return -1; }
+int list_get_index_of(list_t *l, elem value) { 
+	node_t* current = l->head;
+  int count = 0;
+	while (current != NULL) {
+    if (current->value == value) {
+      printf("count: %d\n", count);
+      return count;
+    }
+		current = current->next;
+    count++;
+	}
+  printf("not found \n");
+  return -1;
+}
