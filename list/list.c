@@ -80,7 +80,28 @@ void list_add_at_index(list_t *l, elem value, int index) {
   }
 }
 
-elem list_remove_from_back(list_t *l) { return -1; }
+elem list_remove_from_back(list_t *l) {
+  int length = list_length(l);
+  node_t* current = l->head;
+
+  if (length == 0) {
+    return 0;
+  } else if (length == 1) {
+    elem value = current->value;
+    free(current);
+    l->head = NULL;
+    return value;
+  } else {
+    while (current->next->next != NULL) {
+      current = current->next;
+    }
+    elem value = current->next->value;
+    free(current->next);
+    current->next = NULL;
+    return value;   
+  }
+  return -1;
+}
 elem list_remove_from_front(list_t *l) { return -1; }
 elem list_remove_at_index(list_t *l, int index) { return -1; }
 
