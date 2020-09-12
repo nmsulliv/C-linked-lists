@@ -156,7 +156,16 @@ bool list_is_in(list_t *l, elem value) {
 	}
   return false;
 }
-elem list_get_elem_at(list_t *l, int index) { return -1; }
+elem list_get_elem_at(list_t *l, int index) { 
+  node_t* current = l->head;
+  int current_index = 0;
+  while (current_index < index) {
+    current = current->next;
+    current_index++;
+  }
+  elem value = current->value;
+  return value;
+}
 int list_get_index_of(list_t *l, elem value) { 
 	node_t* current = l->head;
   int count = 0;
