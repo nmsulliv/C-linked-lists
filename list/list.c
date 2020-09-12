@@ -68,7 +68,7 @@ void list_add_at_index(list_t *l, elem value, int index) {
   } else if (index > length) {
     list_add_to_back(l, value);
   } else {
-    int current_index = 0;
+    int current_index = 1;
     while (current_index < index) {
       current = current->next;
       current_index++;
@@ -171,12 +171,11 @@ int list_get_index_of(list_t *l, elem value) {
   int count = 0;
 	while (current != NULL) {
     if (current->value == value) {
-      printf("count: %d\n", count);
       return count;
+    } else {
+      current = current->next;
+      count++;
     }
-		current = current->next;
-    count++;
 	}
-  printf("not found \n");
   return -1;
 }
