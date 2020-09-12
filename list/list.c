@@ -63,7 +63,7 @@ void list_add_to_front(list_t *l, elem value) {
 void list_add_at_index(list_t *l, elem value, int index) {
   node_t* current = l->head;
   int length = list_length(l);
-  if ((current == NULL) || (index == 0)) {
+  if ((current == NULL) || (index <= 0)) {
     list_add_to_front(l, value);
   } else if (index > length) {
     list_add_to_back(l, value);
@@ -122,7 +122,29 @@ elem list_remove_from_front(list_t *l) {
   }
   return -1;
 }
-elem list_remove_at_index(list_t *l, int index) { return -1; }
+elem list_remove_at_index(list_t *l, int index) {
+  int length = list_length(l);
+  node_t* current = l->head;
+  if (index <= 0) {
+    elem value = list_remove_from_front(l);
+    return value;
+  } else if (index >= (length - 1)) {
+    elem value = list_remove_from_back(l);
+    return value;
+  } else {
+    int current_index = 1;
+    while (current_index < index) {
+      current = current->next;
+      current_index++;
+    }
+    node_t* next = current->next->next;
+    elem value = current->next->value;
+    free(current->next);
+    current->next = next;
+    return value;  
+  }
+  return -1;
+}
 
 bool list_is_in(list_t *l, elem value) {
 	node_t* current = l->head;
