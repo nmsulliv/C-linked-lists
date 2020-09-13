@@ -115,25 +115,26 @@ int main() {
   printf("\n");
 
   // operations on empty list test
-  printf("---operations on empty list tests---\n");
+  printf("---operations on empty list tests---\nList: ");
   list_print(mylist);
   printf("Removing from index 0\n");
   list_remove_at_index(mylist, 0);
-  list_print(mylist);
   printf("Removing from back\n");
   list_remove_from_back(mylist);
-  list_print(mylist);
   printf("Removing from front\n");
   list_remove_from_front(mylist);
-  list_print(mylist);
   printf("Removing from index 0\n");
   list_remove_at_index(mylist, 0);
-  list_print(mylist);
   printf("Removing from index 0\n");
   list_remove_at_index(mylist, 0);
+  printf("List: ");
   list_print(mylist);
   val = list_get_elem_at(mylist, 0);
   printf("The element at index 0 is %d \n", val);
+  is_in = list_is_in(mylist, 0);
+  printf("Return 1 if 0 is in the list: %d \n", is_in);
+  val = list_get_index_of(mylist, 4);
+  printf("The index of 0 is %d \n", val);
   printf("\n");
   return 0;
 }
