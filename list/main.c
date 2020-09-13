@@ -136,5 +136,10 @@ int main() {
   val = list_get_index_of(mylist, 4);
   printf("The index of 0 is %d \n", val);
   printf("\n");
+  
+  
+  printf("Freeing list.\n");
+  list_free(mylist);
+
   return 0;
 }
