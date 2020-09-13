@@ -17,7 +17,16 @@ list_t *list_alloc() {
   return list;
 }
 
-void list_free(list_t *l) {}
+void list_free(list_t *l) {
+	node_t* current = l->head;
+	node_t* next = NULL;
+	while (current != NULL) {
+		next = current->next;
+    free(current);
+    current = next;
+	}
+  free(l);
+}
 
 void list_print(list_t *l) {
 	node_t* temp = l->head;
