@@ -106,7 +106,34 @@ int main() {
   printf("Removing 1 from index 1\n");
   list_remove_at_index(mylist, 1);
   list_print(mylist);
+  printf("Removing from index 0\n");
+  list_remove_at_index(mylist, 0);
+  list_print(mylist);
+  printf("Removing from index 0\n");
+  list_remove_at_index(mylist, 0);
+  list_print(mylist);
   printf("\n");
 
+  // operations on empty list test
+  printf("---operations on empty list tests---\n");
+  list_print(mylist);
+  printf("Removing from index 0\n");
+  list_remove_at_index(mylist, 0);
+  list_print(mylist);
+  printf("Removing from back\n");
+  list_remove_from_back(mylist);
+  list_print(mylist);
+  printf("Removing from front\n");
+  list_remove_from_front(mylist);
+  list_print(mylist);
+  printf("Removing from index 0\n");
+  list_remove_at_index(mylist, 0);
+  list_print(mylist);
+  printf("Removing from index 0\n");
+  list_remove_at_index(mylist, 0);
+  list_print(mylist);
+  val = list_get_elem_at(mylist, 0);
+  printf("The element at index 0 is %d \n", val);
+  printf("\n");
   return 0;
 }
